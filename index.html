@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CareAtlas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside id="sidebar">
+  <div class="sidebar-logo">
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <circle cx="14" cy="14" r="13" stroke="#2EC4B6" stroke-width="1.5"/>
+      <circle cx="14" cy="14" r="6" stroke="#2EC4B6" stroke-width="1"/>
+      <circle cx="14" cy="14" r="2.5" fill="#2EC4B6"/>
+      <path d="M14 1 L14 5 M14 23 L14 27 M1 14 L5 14 M23 14 L27 14" stroke="#2EC4B6" stroke-width="1" stroke-linecap="round"/>
+    </svg>
+    <span class="logo-text">CareAtlas</span>
+  </div>
+
+  <div class="zone-label">PATIENT</div>
+  <nav class="sidebar-nav" id="patient-nav">
+    <a href="#" class="nav-item" data-view="patient-home">
+      <svg viewBox="0 0 20 20"><circle cx="10" cy="7" r="3.5" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M3 18c0-4 3.1-7 7-7s7 3 7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+      My Health
+    </a>
+    <a href="#" class="nav-item" data-view="appointments">
+      <svg viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M7 2v4M13 2v4M3 9h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Appointments
+    </a>
+    <a href="#" class="nav-item" data-view="investigations">
+      <svg viewBox="0 0 20 20"><path d="M10 3v14M5 8l5-5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M4 17h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Investigations
+    </a>
+    <a href="#" class="nav-item" data-view="care-plan">
+      <svg viewBox="0 0 20 20"><path d="M5 4h10a1 1 0 011 1v11a1 1 0 01-1 1H5a1 1 0 01-1-1V5a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M7 8h6M7 11h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Care Plan
+    </a>
+    <a href="#" class="nav-item" data-view="health-info">
+      <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M10 9v5M10 7h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Health Info
+    </a>
+  </nav>
+
+  <div class="zone-label" style="margin-top:12px">PRACTICE</div>
+  <nav class="sidebar-nav" id="practice-nav">
+    <a href="#" class="nav-item" data-view="practice-dashboard">
+      <svg viewBox="0 0 20 20"><rect x="3" y="10" width="4" height="7" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="8" y="6" width="4" height="11" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="13" y="3" width="4" height="14" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      Dashboard
+    </a>
+    <a href="#" class="nav-item active" data-view="triage">
+      <svg viewBox="0 0 20 20"><path d="M10 3L3 17h14L10 3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" fill="none"/><path d="M10 10v3M10 14.5h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Triage Queue
+    </a>
+    <a href="#" class="nav-item" data-view="medicare">
+      <svg viewBox="0 0 20 20"><path d="M3 6h14M3 10h10M3 14h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Medicare Intel
+    </a>
+    <a href="#" class="nav-item" data-view="preventative">
+      <svg viewBox="0 0 20 20"><path d="M10 3c0 0-6 4-6 9a6 6 0 0012 0c0-5-6-9-6-9z" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 12l2 2 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Preventative Care
+    </a>
+    <a href="#" class="nav-item" data-view="licence">
+      <svg viewBox="0 0 20 20"><circle cx="10" cy="8" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M5 17v-1a5 5 0 0110 0v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><path d="M15 4l1 1-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Licence Allocator
+    </a>
+  </nav>
+
+  <div class="zone-label" style="margin-top:12px">NEIGHBOURHOOD</div>
+  <nav class="sidebar-nav" id="neighbourhood-nav">
+    <a href="#" class="nav-item" data-view="neighbourhood-map">
+      <svg viewBox="0 0 20 20"><circle cx="10" cy="9" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M10 3a6 6 0 010 12c-3.5 0-7-4-7-6s3.5-6 7-6z" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      Health Map
+    </a>
+    <a href="#" class="nav-item" data-view="referral-network">
+      <svg viewBox="0 0 20 20"><circle cx="5" cy="10" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="15" cy="5" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/><circle cx="15" cy="15" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M7 9.5L13 6M7 10.5L13 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Referral Network
+    </a>
+    <a href="#" class="nav-item" data-view="allied-health">
+      <svg viewBox="0 0 20 20"><rect x="3" y="3" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="11" y="3" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="3" y="11" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="11" y="11" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      Allied Health
+    </a>
+    <a href="#" class="nav-item" data-view="social">
+      <svg viewBox="0 0 20 20"><path d="M3 17c0-3 3-5 7-5s7 2 7 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/><circle cx="10" cy="8" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M15 7c1.5.5 2 2 1 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      Social Determinants
+    </a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="user-chip">
+      <div class="user-avatar">DR</div>
+      <div>
+        <div class="user-name">Dr. R. Patel</div>
+        <div class="user-role">GP · Fitzroy Medical</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<div id="app">
+
+  <!-- TOP BAR -->
+  <header id="topbar">
+    <div class="topbar-left">
+      <div class="breadcrumb" id="breadcrumb">Practice · Triage Queue</div>
+    </div>
+    <div class="topbar-right">
+      <div class="search-bar">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="5.5" stroke="#6B7A8D" stroke-width="1.5"/><path d="M13.5 13.5L17 17" stroke="#6B7A8D" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <input type="text" placeholder="Search patient, MBS item, provider…" />
+      </div>
+      <div class="alert-badge">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 2a6 6 0 016 6v3l1.5 2.5H2.5L4 11V8a6 6 0 016-6z" stroke="#6B7A8D" stroke-width="1.5" fill="none"/><path d="M8 16a2 2 0 004 0" stroke="#6B7A8D" stroke-width="1.5"/></svg>
+        <span class="badge-dot">3</span>
+      </div>
+      <div class="date-chip">Fri 14 Mar 2026</div>
+    </div>
+  </header>
+
+  <!-- CONTENT AREA -->
+  <main id="content">
+
+    <!-- ═══════════════════════════════════════════════
+         VIEW: TRIAGE QUEUE (default)
+    ═══════════════════════════════════════════════ -->
+    <div class="view active" id="view-triage">
+      <div class="view-header">
+        <div>
+          <h1 class="view-title">Triage Queue</h1>
+          <p class="view-sub">14 patients waiting · 3 urgent · Next available: <strong>9:40am</strong></p>
+        </div>
+        <div class="view-actions">
+          <button class="btn-outline">Export</button>
+          <button class="btn-primary">+ Add Patient</button>
+        </div>
+      </div>
+
+      <div class="triage-filters">
+        <button class="filter-chip active">All (14)</button>
+        <button class="filter-chip urgent">Urgent (3)</button>
+        <button class="filter-chip">Priority (5)</button>
+        <button class="filter-chip">Routine (6)</button>
+        <button class="filter-chip">Nurse-led</button>
+        <button class="filter-chip">Telehealth</button>
+      </div>
+
+      <div class="triage-grid">
+        <div class="triage-card urgent-card">
+          <div class="triage-acuity acuity-urgent">U</div>
+          <div class="triage-info">
+            <div class="triage-name">Maria Santos <span class="triage-age">67F</span></div>
+            <div class="triage-reason">Chest pain, SOB — arrived 8:52am</div>
+            <div class="triage-flags">
+              <span class="flag flag-medicare">Medicare</span>
+              <span class="flag flag-concession">Concession</span>
+              <span class="flag flag-cdm">CDM Active</span>
+            </div>
+          </div>
+          <div class="triage-meta">
+            <div class="wait-time urgent-text">32 min wait</div>
+            <div class="triage-assign">Assign to GP</div>
+            <button class="btn-sm btn-urgent">Open</button>
+          </div>
+        </div>
+
+        <div class="triage-card urgent-card">
+          <div class="triage-acuity acuity-urgent">U</div>
+          <div class="triage-info">
+            <div class="triage-name">James Okonkwo <span class="triage-age">45M</span></div>
+            <div class="triage-reason">Acute abdominal pain, vomiting × 6h</div>
+            <div class="triage-flags">
+              <span class="flag flag-medicare">Medicare</span>
+              <span class="flag flag-atsi">ATSI</span>
+            </div>
+          </div>
+          <div class="triage-meta">
+            <div class="wait-time urgent-text">18 min wait</div>
+            <div class="triage-assign">Assign to GP</div>
+            <button class="btn-sm btn-urgent">Open</button>
+          </div>
+        </div>
+
+        <div class="triage-card priority-card">
+          <div class="triage-acuity acuity-priority">P</div>
+          <div class="triage-info">
+            <div class="triage-name">Anh Nguyen <span class="triage-age">52F</span></div>
+            <div class="triage-reason">BP review, uncontrolled — 168/102 at home</div>
+            <div class="triage-flags">
+              <span class="flag flag-medicare">Medicare</span>
+              <span class="flag flag-interpreter">Interpreter: Viet</span>
+            </div>
+          </div>
+          <div class="triage-meta">
+            <div class="wait-time">44 min wait</div>
+            <div class="triage-assign">Nurse → GP</div>
+            <button class="btn-sm">Open</button>
+          </div>
+        </div>
+
+        <div class="triage-card priority-card">
+          <div class="triage-acuity acuity-priority">P</div>
+          <div class="triage-info">
+            <div class="triage-name">David Kim <span class="triage-age">8M</span></div>
+            <div class="triage-reason">Febrile 39.2°C, ear pain, parent concerned</div>
+            <div class="triage-flags">
+              <span class="flag flag-bulk">Bulk Billed ✓</span>
+              <span class="flag flag-child">Child &lt;16</span>
+            </div>
+          </div>
+          <div class="triage-meta">
+            <div class="wait-time">11 min wait</div>
+            <div class="triage-assign">Assign to GP</div>
+            <button class="btn-sm">Open</button>
+          </div>
+        </div>
+
+        <div class="triage-card routine-card">
+          <div class="triage-acuity acuity-routine">R</div>
+          <div class="triage-info">
+            <div class="triage-name">Susan Walsh <span class="triage-age">73F</span></div>
+            <div class="triage-reason">75+ Health Assessment — annual due</div>
+            <div class="triage-flags">
+              <span class="flag flag-medicare">Medicare</span>
+              <span class="flag flag-mbs">MBS 701</span>
+              <span class="flag flag-cdm">CDM Due</span>
+            </div>
+          </div>
+          <div class="triage-meta">
+            <div class="wait-time">Booked 10:00</div>
+            <div class="triage-assign">Nurse-led</div>
+            <button class="btn-sm">Open</button>
+          </div>
+        </div>
+
+        <div class="triage-card routine-card">
+          <div class="triage-acuity acuity-routine">R</div>
+          <div class="triage-info">
+            <div class="triage-name">Ahmed Al-Rashid <span class="triage-age">38M</span></div>
+            <div class="triage-reason">Script renewal — T2DM, hypertension</div>
+            <div class="triage-flags">
+              <span class="flag flag-medicare">Medicare</span>
+              <span class="flag flag-interpreter">Interpreter: Arabic</span>
+            </div>
+          </div>
+          <div class="triage-meta">
+            <div class="wait-time">Telehealth</div>
+            <div class="triage-assign">Assign to GP</div>
+            <button class="btn-sm">Open</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         VIEW: PRACTICE DASHBOARD
+    ═══════════════════════════════════════════════ -->
+    <div class="view" id="view-practice-dashboard">
+      <div class="view-header">
+        <div>
+          <h1 class="view-title">Practice Dashboard</h1>
+          <p class="view-sub">Fitzroy Medical Centre · Friday 14 March 2026</p>
+        </div>
+        <div class="view-actions">
+          <select class="select-chip"><option>Today</option><option>This week</option><option>This month</option></select>
+        </div>
+      </div>
+
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="metric-label">Bulk Billing Rate</div>
+          <div class="metric-val teal">82%</div>
+          <div class="metric-delta up">↑ 4% vs last month</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Today's Appointments</div>
+          <div class="metric-val">48</div>
+          <div class="metric-delta">12 remaining</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Avg Wait Time</div>
+          <div class="metric-val amber">24 min</div>
+          <div class="metric-delta down">↓ 6 min vs target</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">MBS Revenue Today</div>
+          <div class="metric-val">$4,820</div>
+          <div class="metric-delta up">↑ On track</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Preventative Alerts</div>
+          <div class="metric-val red">17</div>
+          <div class="metric-delta">overdue screenings</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">CDM Plans Active</div>
+          <div class="metric-val teal">134</div>
+          <div class="metric-delta">23 due for review</div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="panel">
+          <div class="panel-header">Today's Session Flow</div>
+          <div class="session-bar-wrap">
+            <div class="session-bar">
+              <div class="sb-seg" style="width:60%;background:#2EC4B6" title="Completed">Completed (29)</div>
+              <div class="sb-seg" style="width:25%;background:#FF9F1C" title="In progress">In Progress (12)</div>
+              <div class="sb-seg" style="width:15%;background:#E8EDF2" title="Remaining">Remaining (7)</div>
+            </div>
+          </div>
+          <div class="provider-list">
+            <div class="provider-row">
+              <div class="provider-dot" style="background:#2EC4B6"></div>
+              <div class="provider-name">Dr. R. Patel</div>
+              <div class="provider-count">16 / 18</div>
+              <div class="provider-bar"><div style="width:88%;background:#2EC4B6"></div></div>
+            </div>
+            <div class="provider-row">
+              <div class="provider-dot" style="background:#1B4F8A"></div>
+              <div class="provider-name">Dr. S. O'Brien</div>
+              <div class="provider-count">12 / 18</div>
+              <div class="provider-bar"><div style="width:66%;background:#1B4F8A"></div></div>
+            </div>
+            <div class="provider-row">
+              <div class="provider-dot" style="background:#FF9F1C"></div>
+              <div class="provider-name">Nurse L. Tran</div>
+              <div class="provider-count">8 / 12</div>
+              <div class="provider-bar"><div style="width:66%;background:#FF9F1C"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">MBS Item Mix — Today</div>
+          <div class="mbs-list">
+            <div class="mbs-row"><span class="mbs-item">23</span><span class="mbs-desc">Short consult (&lt;10 min)</span><span class="mbs-count">11</span></div>
+            <div class="mbs-row"><span class="mbs-item">36</span><span class="mbs-desc">Standard consult (10–20 min)</span><span class="mbs-count">18</span></div>
+            <div class="mbs-row"><span class="mbs-item">44</span><span class="mbs-desc">Long consult (20–40 min)</span><span class="mbs-count">7</span></div>
+            <div class="mbs-row"><span class="mbs-item">721</span><span class="mbs-desc">GP Management Plan</span><span class="mbs-count">3</span></div>
+            <div class="mbs-row"><span class="mbs-item">732</span><span class="mbs-desc">CDM Team Care Arrangement</span><span class="mbs-count">2</span></div>
+            <div class="mbs-row"><span class="mbs-item">701</span><span class="mbs-desc">75+ Health Assessment</span><span class="mbs-count">2</span></div>
+            <div class="mbs-row"><span class="mbs-item">2715</span><span class="mbs-desc">Mental Health Treatment Plan</span><span class="mbs-count">3</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         VIEW: MEDICARE INTEL
+    ═══════════════════════════════════════════════ -->
+    <div class="view" id="view-medicare">
+      <div class="view-header">
+        <div>
+          <h1 class="view-title">Medicare Intelligence</h1>
+          <p class="view-sub">Eligibility · Billing optimisation · Incentive tracking</p>
+        </div>
+        <div class="view-actions">
+          <button class="btn-primary">Run Eligibility Check</button>
+        </div>
+      </div>
+
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="metric-label">Bulk Billing Rate</div>
+          <div class="metric-val teal">82%</div>
+          <div class="metric-delta up">Target: 85%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Missed Incentives (MTD)</div>
+          <div class="metric-val red">$1,240</div>
+          <div class="metric-delta">6 unclaimed items</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">DVA Patients</div>
+          <div class="metric-val">14</div>
+          <div class="metric-delta">3 gold card holders</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Concession Holders</div>
+          <div class="metric-val">67</div>
+          <div class="metric-delta">BB incentive eligible</div>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="panel">
+          <div class="panel-header">Unclaimed MBS Opportunities</div>
+          <div class="opportunity-list">
+            <div class="opp-row">
+              <div class="opp-item">MBS 715</div>
+              <div class="opp-desc">Aboriginal & TSI Health Check — 4 patients eligible, not yet claimed this year</div>
+              <div class="opp-val">$456</div>
+            </div>
+            <div class="opp-row">
+              <div class="opp-item">MBS 10987</div>
+              <div class="opp-desc">Bulk billing incentive — concession patients, 8 consults not flagged</div>
+              <div class="opp-val">$312</div>
+            </div>
+            <div class="opp-row">
+              <div class="opp-item">MBS 701</div>
+              <div class="opp-desc">75+ Health Assessment — 6 patients overdue, not scheduled</div>
+              <div class="opp-val">$348</div>
+            </div>
+            <div class="opp-row">
+              <div class="opp-item">MBS 2712</div>
+              <div class="opp-desc">Mental Health GP consult — 3 patients with active MH plans, not billed</div>
+              <div class="opp-val">$124</div>
+            </div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header">Eligibility Flags — Today</div>
+          <div class="elig-list">
+            <div class="elig-row ok"><span class="elig-name">Maria Santos</span><span class="elig-status">Medicare ✓ · Concession ✓</span></div>
+            <div class="elig-row ok"><span class="elig-name">David Kim</span><span class="elig-status">Medicare ✓ · Child BB ✓</span></div>
+            <div class="elig-row warn"><span class="elig-name">James Okonkwo</span><span class="elig-status">Medicare — expires 31 Mar ⚠</span></div>
+            <div class="elig-row ok"><span class="elig-name">Susan Walsh</span><span class="elig-status">Medicare ✓ · DVA Gold ✓</span></div>
+            <div class="elig-row warn"><span class="elig-name">Ahmed Al-Rashid</span><span class="elig-status">Medicare ✓ · Concession unverified ⚠</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         VIEW: PREVENTATIVE CARE
+    ═══════════════════════════════════════════════ -->
+    <div class="view" id="view-preventative">
+      <div class="view-header">
+        <div>
+          <h1 class="view-title">Preventative Care Engine</h1>
+          <p class="view-sub">Screening gaps · Health assessments · Chronic disease management</p>
+        </div>
+        <div class="view-actions">
+          <button class="btn-primary">Recall Campaign</button>
+        </div>
+      </div>
+
+      <div class="metrics-row">
+        <div class="metric-card"><div class="metric-label">Overdue Screenings</div><div class="metric-val red">17</div></div>
+        <div class="metric-card"><div class="metric-label">CDM Reviews Due</div><div class="metric-val amber">23</div></div>
+        <div class="metric-card"><div class="metric-label">Immunisations Gap</div><div class="metric-val amber">9</div></div>
+        <div class="metric-card"><div class="metric-label">Health Checks Due</div><div class="metric-val">12</div></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">Screening Gap Register</div>
+        <table class="data-table">
+          <thead><tr><th>Patient</th><th>Age/Sex</th><th>Screening</th><th>Last Done</th><th>Due</th><th>MBS Item</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td>Susan Walsh</td><td>73F</td><td>Bowel Cancer Screening</td><td>Never recorded</td><td class="text-red">Overdue</td><td>MBS 11700</td><td><button class="btn-sm">Recall</button></td></tr>
+            <tr><td>Anh Nguyen</td><td>52F</td><td>Breast Mammogram</td><td>Mar 2023</td><td class="text-red">Overdue</td><td>External</td><td><button class="btn-sm">Refer</button></td></tr>
+            <tr><td>James Okonkwo</td><td>45M</td><td>45–49 Health Assessment</td><td>Never</td><td class="text-red">Overdue</td><td>MBS 10–12</td><td><button class="btn-sm">Schedule</button></td></tr>
+            <tr><td>Ahmed Al-Rashid</td><td>38M</td><td>Lipids / CVD Risk</td><td>Jan 2024</td><td class="text-amber">Due soon</td><td>MBS 65070</td><td><button class="btn-sm">Order</button></td></tr>
+            <tr><td>Maria Santos</td><td>67F</td><td>Spirometry (COPD)</td><td>Aug 2023</td><td class="text-amber">Due soon</td><td>MBS 11506</td><td><button class="btn-sm">Schedule</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         VIEW: LICENCE ALLOCATOR
+    ═══════════════════════════════════════════════ -->
+    <div class="view" id="view-licence">
+      <div class="view-header">
+        <div>
+          <h1 class="view-title">Top of Licence Allocator</h1>
+          <p class="view-sub">Match task complexity to the right provider — freeing GPs for high-acuity work</p>
+        </div>
+      </div>
+
+      <div class="two-col">
+        <div class="panel">
+          <div class="panel-header">Today's Task Routing</div>
+          <div class="task-list">
+            <div class="task-row"><div class="task-tag gp">GP</div><div class="task-desc">Complex CDM reviews, acute presentations, mental health plans, new diagnosis workup</div></div>
+            <div class="task-row"><div class="task-tag nurse">RN/NP</div><div class="task-desc">Immunisations, wound care, BP monitoring, chronic disease check-ins, health assessments (75+), INR checks</div></div>
+            <div class="task-row"><div class="task-tag allied">Allied</div><div class="task-desc">CDM referrals: podiatry, dietitian, physio, psychology (Better Access), diabetes education</div></div>
+            <div class="task-row"><div class="task-tag admin">Admin</div><div class="task-desc">Eligibility verification, recall letters, script repeats (protocol), referral coordination, interpreter booking</div></div>
+            <div class="task-row"><div class="task-tag pharm">Pharmacist</div><div class="task-desc">Medication reconciliation, poly-pharmacy reviews, dose administration aid, HMR referrals</div></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header">Unallocated Tasks (7)</div>
+          <div class="unalloc-list">
+            <div class="unalloc-row"><div class="unalloc-desc">INR check — M. Santos</div><div class="rec-tag nurse">→ Nurse</div></div>
+            <div class="unalloc-row"><div class="unalloc-desc">Script renewal — metformin, A. Al-Rashid</div><div class="rec-tag admin">→ Admin protocol</div></div>
+            <div class="unalloc-row"><div class="unalloc-desc">Wound re-dress — D. Thompson</div><div class="rec-tag nurse">→ Nurse</div></div>
+            <div class="unalloc-row"><div class="unalloc-desc">HMR referral — S. Walsh (8 meds)</div><div class="rec-tag pharm">→ Pharmacist</div></div>
+            <div class="unalloc-row"><div class="unalloc-desc">Dietitian CDM referral — J. Okonkwo</div><div class="rec-tag allied">→ Allied Health</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         VIEW: PATIENT HOME
+    ═══════════════════════════════════════════════ -->
+    <div class="view" id="view-patient-home">
+      <div class="view-header">
+        <div>
+          <h1 class="view-title">My Health</h1>
+          <p class="view-sub">Maria Santos · DOB 12 Mar 1959 · Medicare 2345 67890 1</p>
+        </div>
+        <div class="view-actions">
+          <button class="btn-outline">Share Summary</button>
+        </div>
+      </div>
+
+      <div class="patient-hero">
+        <div class="patient-stat"><div class="ps-label">Next Appointment</div><div class="ps-val">Mon 17 Mar · 10:30am</div></div>
+        <div class="patient-stat"><div class="ps-label">Treating GP</div><div class="ps-val">Dr. R. Patel</div></div>
+        <div class="patient-stat"><div class="ps-label">Care Plan</div><div class="ps-val teal">CDM Active</div></div>
+        <div class="patient-stat"><div class="ps-label">Pending Results</div><div class="ps-val amber">2 awaiting</div></div>
+      </div>
+
+      <div class="two-col">
+        <div class="panel">
+          <div class="panel-header">Active Conditions</div>
+          <div class="condition-list">
+            <div class="condition-row"><div class="cond-dot" style="background:#E84855"></div><div>Type 2 Diabetes — HbA1c 7.8% (Feb 2026)</div></div>
+            <div class="condition-row"><div class="cond-dot" style="background:#FF9F1C"></div><div>Hypertension — BP trending high, review needed</div></div>
+            <div class="condition-row"><div class="cond-dot" style="background:#FF9F1C"></div><div>Osteoarthritis — Knees bilateral, physio referral active</div></div>
+            <div class="condition-row"><div class="cond-dot" style="background:#2EC4B6"></div><div>Hypercholesterolaemia — stable on rosuvastatin</div></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-header">Upcoming Actions</div>
+          <div class="action-list">
+            <div class="action-item"><span class="action-icon red">!</span>HbA1c repeat — due now (last Feb)</div>
+            <div class="action-item"><span class="action-icon amber">↑</span>BP medication review — Dr. Patel Mon</div>
+            <div class="action-item"><span class="action-icon teal">✓</span>Flu vaccine — booked Nurse Thu 19 Mar</div>
+            <div class="action-item"><span class="action-icon blue">→</span>Podiatry CDM visit — booked 24 Mar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         VIEW: APPOINTMENTS
+    ═══════════════════════════════════════════════ -->
+    <div class="view" id="view-appointments">
+      <div class="view-header">
+        <div>
+          <h1 class="view-title">Appointments</h1>
+          <p class="view-sub">Planned & priority visits · Interpreter booking · Health info in your language</p>
+        </div>
+        <div class="view-actions">
+          <button class="btn-primary">Book Appointment</button>
+        </div>
+      </div>
+
+      <div class="appt-list">
+        <div class="appt-card upcoming">
+          <div class="appt-date"><div class="appt-day">MON</div><div class="appt-num">17</div></div>
+          <div class="appt-detail">
+            <div class="appt-title">GP Review — Blood pressure & diabetes</div>
+            <div class="appt-meta">10:30am · Dr. R. Patel · Fitzroy Medical Centre</div>
+            <div class="appt-flags"><span class="flag flag-bulk">Bulk Billed</span><span class="flag flag-cdm">CDM</span></div>
+          </div>
+          <div class="appt-actions"><button class="btn-sm">Details</button><button class="btn-sm">Reschedule</button></div>
+        </div>
+        <div class="appt-card upcoming">
+          <div class="appt-date"><div class="appt-day">THU</div><div class="appt-num">19</div></div>
+          <div class="appt-detail">
+            <div class="appt-title">Flu Vaccination</div>
+            <div class="appt-meta">9:00am · Nurse L. Tran · Fitzroy Medical Centre</div>
+            <div class="appt-flags"><span class="flag flag-bulk">Bulk Billed</span><span class="flag flag-nurse">Nurse-led</span></div>
+          </div>
+          <div class="appt-actions"><button class="btn-sm">Details</button></div>
+        </div>
+        <div class="appt-card upcoming">
+          <div class="appt-date"><div class="appt-day">MON</div><div class="appt-num">24</div></div>
+          <div class="appt-detail">
+            <div class="appt-title">Podiatry — CDM Allied Health</div>
+            <div class="appt-meta">2:00pm · Jess Arnold · Brunswick Podiatry</div>
+            <div class="appt-flags"><span class="flag flag-cdm">CDM Referral</span><span class="flag flag-bulk">Bulk Billed</span></div>
+          </div>
+          <div class="appt-actions"><button class="btn-sm">Details</button></div>
+        </div>
+      </div>
+
+      <div class="lang-panel panel" style="margin-top:24px">
+        <div class="panel-header">Health Information — Your Language</div>
+        <div class="lang-grid">
+          <div class="lang-card"><div class="lang-flag">🇵🇭</div><div class="lang-label">Filipino / Tagalog</div><div class="lang-links"><a href="#">Diabetes Info</a><a href="#">BP Guide</a><a href="#">Vaccine Info</a></div></div>
+          <div class="lang-card"><div class="lang-flag">🇻🇳</div><div class="lang-label">Vietnamese</div><div class="lang-links"><a href="#">Diabetes Info</a><a href="#">BP Guide</a></div></div>
+          <div class="lang-card"><div class="lang-flag">🇨🇳</div><div class="lang-label">Mandarin</div><div class="lang-links"><a href="#">Diabetes Info</a><a href="#">Vaccine Info</a></div></div>
+          <div class="lang-card"><div class="lang-flag">🇸🇦</div><div class="lang-label">Arabic</div><div class="lang-links"><a href="#">Diabetes Info</a><a href="#">BP Guide</a></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         VIEW: INVESTIGATIONS
+    ═══════════════════════════════════════════════ -->
+    <div class="view" id="view-investigations">
+      <div class="view-header">
+        <div>
+          <h1 class="view-title">Investigations</h1>
+          <p class="view-sub">Results tracking · No duplication · Overservicing prevention</p>
+        </div>
+      </div>
+
+      <div class="inv-list panel">
+        <div class="panel-header">Active Investigations — Maria Santos</div>
+        <table class="data-table">
+          <thead><tr><th>Test</th><th>Ordered By</th><th>Date Ordered</th><th>Lab</th><th>Status</th><th>Result</th><th>Action</th></tr></thead>
+          <tbody>
+            <tr><td>HbA1c</td><td>Dr. Patel</td><td>10 Mar 2026</td><td>Dorevitch</td><td><span class="status-badge pending">Pending</span></td><td>—</td><td><button class="btn-sm">Track</button></td></tr>
+            <tr><td>Lipid Panel</td><td>Dr. Patel</td><td>10 Mar 2026</td><td>Dorevitch</td><td><span class="status-badge pending">Pending</span></td><td>—</td><td><button class="btn-sm">Track</button></td></tr>
+            <tr><td>eGFR / U&E</td><td>Dr. O'Brien</td><td>5 Mar 2026</td><td>Dorevitch</td><td><span class="status-badge done">Resulted</span></td><td>eGFR 58 ⚠</td><td><button class="btn-sm">View</button></td></tr>
+            <tr><td>ECG</td><td>Dr. Patel</td><td>14 Mar 2026</td><td>In-house</td><td><span class="status-badge done">Resulted</span></td><td>NSR, LVH changes</td><td><button class="btn-sm">View</button></td></tr>
+          </tbody>
+        </table>
+        <div class="dup-alert">
+          <span class="dup-icon">⚠</span> Duplication alert: Lipid panel also requested by after-hours service (8 Mar). CareAtlas has suppressed the duplicate order.
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         VIEW: CARE PLAN
+    ═══════════════════════════════════════════════ -->
+    <div class="view" id="view-care-plan">
+      <div class="view-header">
+        <div><h1 class="view-title">Care Plan</h1><p class="view-sub">CDM Plan · Team Care Arrangement · Goals of Care</p></div>
+        <div class="view-actions"><button class="btn-primary">Review Plan</button></div>
+      </div>
+      <div class="panel">
+        <div class="panel-header">GP Management Plan — MBS 721 · Active since Jan 2025</div>
+        <div class="cp-section"><strong>Patient Goals:</strong> "I want to avoid going to hospital. I want to keep walking to the park."</div>
+        <div class="cp-section"><strong>Clinical Goals:</strong> HbA1c &lt;7.5%, BP &lt;130/80, eGFR stable, annual foot & eye checks.</div>
+        <div class="cp-section"><strong>Team Care Arrangement (MBS 732):</strong>
+          <div class="tca-grid">
+            <div class="tca-card"><div class="tca-role">Podiatry</div><div class="tca-name">Jess Arnold</div><div class="tca-status">Active</div></div>
+            <div class="tca-card"><div class="tca-role">Dietitian</div><div class="tca-name">Rosa Chan</div><div class="tca-status">Active</div></div>
+            <div class="tca-card"><div class="tca-role">Pharmacist</div><div class="tca-name">Raj Kumar</div><div class="tca-status">HMR Due</div></div>
+            <div class="tca-card"><div class="tca-role">Diabetes Ed.</div><div class="tca-name">NDSS Referral</div><div class="tca-status teal">Pending</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         VIEW: HEALTH MAP (NEIGHBOURHOOD)
+    ═══════════════════════════════════════════════ -->
+    <div class="view" id="view-neighbourhood-map">
+      <div class="view-header">
+        <div><h1 class="view-title">Health Neighbourhood Map</h1><p class="view-sub">Fitzroy · Brunswick · Carlton · Collingwood catchment</p></div>
+        <div class="view-actions"><button class="btn-outline">Filter Services</button></div>
+      </div>
+
+      <div class="map-placeholder">
+        <div class="map-inner">
+          <div class="map-label">Interactive Health Map</div>
+          <div class="map-sub">Catchment: Inner North Melbourne</div>
+          <div class="map-pins">
+            <div class="map-pin pin-gp" style="left:42%;top:38%"><div class="pin-dot"></div><div class="pin-label">Fitzroy Medical</div></div>
+            <div class="map-pin pin-hospital" style="left:58%;top:28%"><div class="pin-dot"></div><div class="pin-label">Royal Melbourne Hospital</div></div>
+            <div class="map-pin pin-allied" style="left:32%;top:55%"><div class="pin-dot"></div><div class="pin-label">Brunswick Podiatry</div></div>
+            <div class="map-pin pin-allied" style="left:65%;top:52%"><div class="pin-dot"></div><div class="pin-label">Collingwood Physio</div></div>
+            <div class="map-pin pin-community" style="left:48%;top:62%"><div class="pin-dot"></div><div class="pin-label">Fitzroy Community Health</div></div>
+            <div class="map-pin pin-pharmacy" style="left:38%;top:45%"><div class="pin-dot"></div><div class="pin-label">Raj's Pharmacy</div></div>
+          </div>
+          <div class="map-legend">
+            <span class="leg-item"><span class="leg-dot" style="background:#1B4F8A"></span>GP Practice</span>
+            <span class="leg-item"><span class="leg-dot" style="background:#E84855"></span>Hospital</span>
+            <span class="leg-item"><span class="leg-dot" style="background:#2EC4B6"></span>Allied Health</span>
+            <span class="leg-item"><span class="leg-dot" style="background:#FF9F1C"></span>Community Health</span>
+            <span class="leg-item"><span class="leg-dot" style="background:#7B61FF"></span>Pharmacy</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         VIEW: REFERRAL NETWORK
+    ═══════════════════════════════════════════════ -->
+    <div class="view" id="view-referral-network">
+      <div class="view-header">
+        <div><h1 class="view-title">Referral Network</h1><p class="view-sub">Active referrals · Wait times · Bulk billing specialists</p></div>
+        <div class="view-actions"><button class="btn-primary">New Referral</button></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">Active Referrals — Practice Wide</div>
+        <table class="data-table">
+          <thead><tr><th>Patient</th><th>Specialty</th><th>Provider</th><th>Sent</th><th>Est. Wait</th><th>Bulk Bill</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>M. Santos</td><td>Cardiology</td><td>Dr. H. Lim, RMH</td><td>10 Mar</td><td>3–4 weeks</td><td><span class="bb-yes">Yes</span></td><td><span class="status-badge pending">Pending</span></td></tr>
+            <tr><td>A. Nguyen</td><td>Ophthalmology</td><td>Carlton Eye Clinic</td><td>28 Feb</td><td>6–8 weeks</td><td><span class="bb-no">No</span></td><td><span class="status-badge pending">Pending</span></td></tr>
+            <tr><td>S. Walsh</td><td>Geriatrics</td><td>Dr. P. Singh, RMH</td><td>1 Mar</td><td>4 weeks</td><td><span class="bb-yes">Yes</span></td><td><span class="status-badge done">Appt booked</span></td></tr>
+            <tr><td>J. Okonkwo</td><td>Gastro</td><td>Melbourne Gastro Group</td><td>14 Mar</td><td>2–3 weeks</td><td><span class="bb-yes">Yes</span></td><td><span class="status-badge new">New</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         VIEW: ALLIED HEALTH
+    ═══════════════════════════════════════════════ -->
+    <div class="view" id="view-allied-health">
+      <div class="view-header">
+        <div><h1 class="view-title">Allied Health</h1><p class="view-sub">CDM team · Better Access · NDIS · Community health links</p></div>
+      </div>
+
+      <div class="allied-grid">
+        <div class="allied-card"><div class="allied-icon" style="background:#2EC4B6">🦶</div><div class="allied-name">Podiatry</div><div class="allied-detail">3 active CDM patients<br/>Next available: Mon 17 Mar</div><button class="btn-sm">Refer</button></div>
+        <div class="allied-card"><div class="allied-icon" style="background:#1B4F8A">🧠</div><div class="allied-name">Psychology</div><div class="allied-detail">Better Access · 6 sessions<br/>2 patients active</div><button class="btn-sm">Refer</button></div>
+        <div class="allied-card"><div class="allied-icon" style="background:#FF9F1C">🥗</div><div class="allied-name">Dietitian</div><div class="allied-detail">CDM + NDIS<br/>Wait: 1 week</div><button class="btn-sm">Refer</button></div>
+        <div class="allied-card"><div class="allied-icon" style="background:#7B61FF">💊</div><div class="allied-name">Pharmacist</div><div class="allied-detail">HMR + medication review<br/>In-house Tue/Thu</div><button class="btn-sm">Refer</button></div>
+        <div class="allied-card"><div class="allied-icon" style="background:#2EC4B6">🏃</div><div class="allied-name">Physiotherapy</div><div class="allied-detail">CDM referrals accepted<br/>Collingwood · 2 weeks</div><button class="btn-sm">Refer</button></div>
+        <div class="allied-card"><div class="allied-icon" style="background:#E84855">❤️</div><div class="allied-name">Cardiac Rehab</div><div class="allied-detail">RMH program<br/>Bulk billed</div><button class="btn-sm">Refer</button></div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         VIEW: SOCIAL DETERMINANTS
+    ═══════════════════════════════════════════════ -->
+    <div class="view" id="view-social">
+      <div class="view-header">
+        <div><h1 class="view-title">Social Determinants of Health</h1><p class="view-sub">Housing · Food security · Transport · Social isolation · Language</p></div>
+      </div>
+
+      <div class="metrics-row">
+        <div class="metric-card"><div class="metric-label">Patients flagged — housing instability</div><div class="metric-val amber">8</div></div>
+        <div class="metric-card"><div class="metric-label">Interpreter needed</div><div class="metric-val">14</div></div>
+        <div class="metric-card"><div class="metric-label">Transport barrier</div><div class="metric-val">6</div></div>
+        <div class="metric-card"><div class="metric-label">Social isolation risk</div><div class="metric-val red">11</div></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-header">Social Prescribing — Community Links</div>
+        <div class="social-grid">
+          <div class="social-card"><div class="sc-name">Fitzroy Community Legal Centre</div><div class="sc-desc">Tenancy, income support, legal aid</div><a href="#" class="sc-link">Refer →</a></div>
+          <div class="social-card"><div class="sc-name">FoodBank Vic — Fitzroy Hub</div><div class="sc-desc">Emergency food relief, weekly parcels</div><a href="#" class="sc-link">Refer →</a></div>
+          <div class="social-card"><div class="sc-name">Inner North Community Foundation</div><div class="sc-desc">Social connection programs, men's shed</div><a href="#" class="sc-link">Refer →</a></div>
+          <div class="social-card"><div class="sc-name">Metro Access — Transport</div><div class="sc-desc">Subsidised transport for health appointments</div><a href="#" class="sc-link">Refer →</a></div>
+          <div class="social-card"><div class="sc-name">TIS National — Interpreter</div><div class="sc-desc">Phone/video interpreter · 150+ languages · Bulk billed</div><a href="#" class="sc-link">Book →</a></div>
+          <div class="social-card"><div class="sc-name">EACH Community Health</div><div class="sc-desc">NDIS, mental health, aged care coordination</div><a href="#" class="sc-link">Refer →</a></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════
+         VIEW: HEALTH INFO
+    ═══════════════════════════════════════════════ -->
+    <div class="view" id="view-health-info">
+      <div class="view-header">
+        <div><h1 class="view-title">Health Information</h1><p class="view-sub">Translated resources · Easy read · Video guides</p></div>
+      </div>
+      <div class="lang-grid" style="margin-top:24px">
+        <div class="lang-card"><div class="lang-flag">🇵🇭</div><div class="lang-label">Filipino</div><div class="lang-links"><a href="#">Diabetes</a><a href="#">Blood Pressure</a><a href="#">Vaccines</a><a href="#">Medications</a></div></div>
+        <div class="lang-card"><div class="lang-flag">🇻🇳</div><div class="lang-label">Vietnamese</div><div class="lang-links"><a href="#">Diabetes</a><a href="#">Blood Pressure</a><a href="#">Heart Health</a></div></div>
+        <div class="lang-card"><div class="lang-flag">🇨🇳</div><div class="lang-label">Mandarin</div><div class="lang-links"><a href="#">Diabetes</a><a href="#">Vaccines</a><a href="#">Mental Health</a></div></div>
+        <div class="lang-card"><div class="lang-flag">🇸🇦</div><div class="lang-label">Arabic</div><div class="lang-links"><a href="#">Diabetes</a><a href="#">Blood Pressure</a><a href="#">Ramadan & Meds</a></div></div>
+        <div class="lang-card"><div class="lang-flag">🇮🇳</div><div class="lang-label">Hindi</div><div class="lang-links"><a href="#">Diabetes</a><a href="#">Heart Health</a></div></div>
+        <div class="lang-card"><div class="lang-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div><div class="lang-label">Easy Read (English)</div><div class="lang-links"><a href="#">All topics</a></div></div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
