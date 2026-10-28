@@ -132,7 +132,7 @@
       <div class="view-header">
         <div>
           <h1 class="view-title">Triage Queue</h1>
-          <p class="view-sub">14 patients waiting · 3 urgent · Next available: <strong>9:40am</strong></p>
+          <p class="view-sub" id="triage-sub">Loading…</p>
         </div>
         <div class="view-actions">
           <button class="btn-outline">Export</button>
@@ -140,16 +140,16 @@
         </div>
       </div>
 
-      <div class="triage-filters">
-        <button class="filter-chip active">All (14)</button>
-        <button class="filter-chip urgent">Urgent (3)</button>
-        <button class="filter-chip">Priority (5)</button>
-        <button class="filter-chip">Routine (6)</button>
-        <button class="filter-chip">Nurse-led</button>
-        <button class="filter-chip">Telehealth</button>
+      <div class="triage-filters" id="triage-filters">
+        <button class="filter-chip active" data-filter="all">All</button>
+        <button class="filter-chip urgent" data-filter="urgent">Urgent</button>
+        <button class="filter-chip" data-filter="priority">Priority</button>
+        <button class="filter-chip" data-filter="routine">Routine</button>
+        <button class="filter-chip" data-filter="nurse">Nurse-led</button>
+        <button class="filter-chip" data-filter="telehealth">Telehealth</button>
       </div>
 
-      <div class="triage-grid">
+      <div class="triage-grid" id="triage-grid-live">
         <div class="triage-card urgent-card">
           <div class="triage-acuity acuity-urgent">U</div>
           <div class="triage-info">
@@ -503,8 +503,8 @@
     <div class="view" id="view-patient-home">
       <div class="view-header">
         <div>
-          <h1 class="view-title">My Health</h1>
-          <p class="view-sub">Maria Santos · DOB 12 Mar 1959 · Medicare 2345 67890 1</p>
+          <h1 class="view-title" id="pt-name">My Health</h1>
+          <p class="view-sub" id="pt-age"></p>
         </div>
         <div class="view-actions">
           <button class="btn-outline">Share Summary</button>
@@ -512,30 +512,31 @@
       </div>
 
       <div class="patient-hero">
-        <div class="patient-stat"><div class="ps-label">Next Appointment</div><div class="ps-val">Mon 17 Mar · 10:30am</div></div>
-        <div class="patient-stat"><div class="ps-label">Treating GP</div><div class="ps-val">Dr. R. Patel</div></div>
-        <div class="patient-stat"><div class="ps-label">Care Plan</div><div class="ps-val teal">CDM Active</div></div>
-        <div class="patient-stat"><div class="ps-label">Pending Results</div><div class="ps-val amber">2 awaiting</div></div>
+        <div class="patient-stat"><div class="ps-label">Next Appointment</div><div class="ps-val" id="pt-next-appt">—</div></div>
+        <div class="patient-stat"><div class="ps-label">Medicare Number</div><div class="ps-val" id="pt-medicare">—</div></div>
+        <div class="patient-stat"><div class="ps-label">Active Conditions</div><div class="ps-val teal" id="pt-conditions-count">—</div></div>
+        <div class="patient-stat"><div class="ps-label">Current Medications</div><div class="ps-val amber" id="pt-meds-count">—</div></div>
       </div>
 
       <div class="two-col">
         <div class="panel">
           <div class="panel-header">Active Conditions</div>
-          <div class="condition-list">
-            <div class="condition-row"><div class="cond-dot" style="background:#E84855"></div><div>Type 2 Diabetes — HbA1c 7.8% (Feb 2026)</div></div>
-            <div class="condition-row"><div class="cond-dot" style="background:#FF9F1C"></div><div>Hypertension — BP trending high, review needed</div></div>
-            <div class="condition-row"><div class="cond-dot" style="background:#FF9F1C"></div><div>Osteoarthritis — Knees bilateral, physio referral active</div></div>
-            <div class="condition-row"><div class="cond-dot" style="background:#2EC4B6"></div><div>Hypercholesterolaemia — stable on rosuvastatin</div></div>
-          </div>
+          <div class="condition-list" id="pt-conditions-list"></div>
         </div>
         <div class="panel">
-          <div class="panel-header">Upcoming Actions</div>
-          <div class="action-list">
-            <div class="action-item"><span class="action-icon red">!</span>HbA1c repeat — due now (last Feb)</div>
-            <div class="action-item"><span class="action-icon amber">↑</span>BP medication review — Dr. Patel Mon</div>
-            <div class="action-item"><span class="action-icon teal">✓</span>Flu vaccine — booked Nurse Thu 19 Mar</div>
-            <div class="action-item"><span class="action-icon blue">→</span>Podiatry CDM visit — booked 24 Mar</div>
-          </div>
+          <div class="panel-header">Current Medications</div>
+          <div class="mbs-list" id="pt-meds-list"></div>
+        </div>
+      </div>
+
+      <div class="two-col" style="margin-top:20px">
+        <div class="panel">
+          <div class="panel-header">Investigations</div>
+          <div class="mbs-list" id="pt-investigations-list"></div>
+        </div>
+        <div class="panel">
+          <div class="panel-header">Upcoming Appointments</div>
+          <div class="appt-list" id="pt-appointments-list"></div>
         </div>
       </div>
     </div>

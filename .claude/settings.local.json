@@ -1,7 +1,16 @@
 {
   "permissions": {
     "allow": [
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Bash(git push *)",
+      "Bash(git remote *)",
+      "Bash(docker compose *)",
+      "Bash(/usr/local/bin/docker compose *)",
+      "Bash(/Applications/Docker.app/Contents/Resources/bin/docker compose *)",
+      "Bash(curl -s http://localhost:3000/api/patients)",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl -s http://localhost:3000/api/triage)",
+      "Bash(python3 -c \"import json,sys; data=json.load\\(sys.stdin\\); [print\\(f\\\\\"{r['first_name']} {r['last_name']} | {r['acuity'].upper\\(\\)} | {r['reason']} | {r['wait_minutes']} min wait\\\\\"\\) for r in data]\")"
     ]
   }
 }
