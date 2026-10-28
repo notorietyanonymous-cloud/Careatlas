@@ -2,7 +2,23 @@
 
 ## [Unreleased] — Milestone 1: CareAtlas Copilot
 - Branch: `feature/milestone-1-copilot`
-- In development
+- Status: Awaiting chairperson approval to merge to main
+
+### Added
+- Copilot side panel (persistent, collapsible, topbar toggle)
+- Slash command registry with `/ndis` workflow and 7 command stubs
+- Patient context selector (5 synthetic patients)
+- WorkflowEngine — reusable state machine for all slash command workflows
+- `/ndis` workflow: purpose selection → clinical evidence → missing-info warnings → editable draft → clinician approval gate → download → audit trail
+- 28 automated tests covering engine, workflow definitions, registry and data
+- `modules/` directory structure for future milestones
+- `tests/` directory
+
+### Architecture decisions
+- Vanilla JS (no framework) — matches existing codebase, no build step needed
+- State machine pattern — testable, provider-agnostic, reusable across commands
+- AI interface not yet wired — ready for any provider
+- Synthetic data isolated in `modules/data/`
 
 ---
 

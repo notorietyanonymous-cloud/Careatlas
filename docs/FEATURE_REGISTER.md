@@ -8,14 +8,14 @@ Status definitions: `Proposed` | `Designed` | `In Development` | `Demonstrated` 
 
 | Feature | Status | Notes |
 |---------|--------|-------|
-| Copilot side panel | In Development | Persistent, collapsible |
-| Slash command registry | In Development | `/ndis` first |
-| Patient context selector | In Development | Synthetic patients |
-| `/ndis` workflow engine | In Development | 12-step flow |
-| Document preview + edit | In Development | |
-| Clinician approval gate | In Development | Simulated |
-| Document download | In Development | |
-| Audit trail | In Development | Simulated |
+| Copilot side panel | Tested | Persistent, collapsible, topbar toggle |
+| Slash command registry | Tested | `/ndis` available, 7 stubs registered |
+| Patient context selector | Tested | 5 synthetic patients |
+| `/ndis` workflow engine | Tested | 6-step state machine, 28 tests passing |
+| Document preview + edit | Tested | contenteditable draft |
+| Clinician approval gate | Tested | Hard gate — checkbox required |
+| Document download | Tested | .txt download |
+| Audit trail | Tested | Full event log per workflow |
 | `/workcover` command | Proposed | Same engine, different template |
 | `/referral` command | Proposed | |
 | `/coding` command | Proposed | |
