@@ -726,3 +726,110 @@ html, body { height: 100%; font-family: 'Inter', sans-serif; font-size: 14px; co
 }
 .copilot-audit-time { color: var(--muted); flex-shrink: 0; }
 .copilot-audit-event { color: var(--text); }
+
+/* ─── WORKFLOW SHARED (M2 additions) ─── */
+.wf-field-label {
+  font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px;
+}
+
+.wf-option {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border);
+  margin-bottom: 6px; cursor: pointer; font-size: 0.82rem;
+  transition: border-color 0.15s;
+}
+.wf-option:hover { border-color: var(--teal); }
+.wf-option-selected { border-color: var(--teal); background: rgba(46,196,182,0.06); }
+.wf-option input { margin-top: 2px; accent-color: var(--teal); flex-shrink: 0; }
+.wf-option-desc { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+
+.wf-badge-critical { background: #FFEBEE; color: #B71C1C; }
+.wf-badge-info     { background: #E3F2FD; color: #1565C0; }
+
+.wf-all-clear {
+  text-align: center; padding: 24px 16px; color: var(--muted); font-size: 0.82rem;
+}
+.wf-all-clear-icon {
+  font-size: 2rem; margin-bottom: 10px;
+  background: #E8F5E9; border-radius: 50%; width: 52px; height: 52px;
+  line-height: 52px; text-align: center; margin: 0 auto 10px;
+  color: #2E7D32;
+}
+
+/* ─── CODING FINDINGS ─── */
+.wf-findings-summary {
+  display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap;
+}
+.wf-findings-list { display: flex; flex-direction: column; gap: 6px; }
+
+.wf-finding {
+  border-radius: 8px; border-left: 3px solid var(--border);
+  background: var(--bg); padding: 10px 12px; font-size: 0.78rem;
+}
+.wf-finding-critical { border-left-color: #B71C1C; }
+.wf-finding-warning  { border-left-color: #E65100; }
+.wf-finding-suggestion { border-left-color: #1565C0; }
+
+.wf-finding-selectable {
+  display: flex; align-items: flex-start; gap: 10px;
+  cursor: pointer; border: 1px solid var(--border); border-left-width: 3px;
+}
+.wf-finding-selectable:hover { background: rgba(46,196,182,0.04); }
+.wf-finding-selectable input[type="checkbox"] {
+  margin-top: 2px; flex-shrink: 0; accent-color: var(--teal);
+}
+.wf-finding-inner { flex: 1; min-width: 0; }
+.wf-finding-check { cursor: pointer; }
+
+.wf-finding-header {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 8px; margin-bottom: 4px;
+}
+.wf-finding-type {
+  font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.06em; color: var(--muted);
+}
+.wf-finding-field {
+  font-weight: 600; color: var(--text); font-size: 0.78rem;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.wf-finding-desc { color: var(--text); line-height: 1.45; margin-bottom: 4px; }
+.wf-finding-suggestion {
+  font-size: 0.72rem; color: var(--muted); font-style: italic;
+}
+.wf-section-note {
+  font-size: 0.72rem; color: var(--muted); margin-top: 10px;
+  padding: 8px; background: #FFF8E1; border-radius: 6px;
+}
+
+.wf-draft-content {
+  font-size: 0.72rem; font-family: 'Courier New', monospace;
+  white-space: pre-wrap; background: var(--bg); border: 1px solid var(--border);
+  border-radius: 6px; padding: 12px; max-height: 260px; overflow-y: auto;
+  line-height: 1.5; color: var(--text);
+}
+
+.wf-approval-block {
+  background: var(--bg); border-radius: 10px; padding: 16px;
+  border: 1px solid var(--border);
+}
+.wf-approval-icon { font-size: 1.8rem; margin-bottom: 12px; }
+.wf-approval-block p { font-size: 0.82rem; margin-bottom: 8px; }
+.wf-approval-list {
+  font-size: 0.78rem; color: var(--text); padding-left: 20px;
+  margin-bottom: 12px; line-height: 1.8;
+}
+.wf-approval-clinician { font-size: 0.75rem; color: var(--muted); }
+
+.wf-complete-block {
+  text-align: center; padding: 16px 0;
+}
+.wf-complete-icon {
+  font-size: 2rem; background: #E8F5E9; border-radius: 50%;
+  width: 52px; height: 52px; line-height: 52px;
+  margin: 0 auto 12px; color: #2E7D32; display: flex;
+  align-items: center; justify-content: center;
+}
+.wf-complete-block p { font-size: 0.82rem; margin-bottom: 4px; }
+.wf-ready-hint { font-size: 0.72rem; color: var(--muted); }
