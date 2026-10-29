@@ -210,12 +210,14 @@
   // ─── Workflow lifecycle ───────────────────────────────────────
 
   function startWorkflow(cmd) {
-    if (cmd.module !== 'ndis') {
+    if (cmd.module === 'ndis') {
+      activeWorkflow = new WorkflowEngine('ndis', NDIS_STEPS, { patient: activePatient });
+    } else if (cmd.module === 'coding') {
+      activeWorkflow = new WorkflowEngine('coding', CODING_STEPS, { patient: activePatient });
+    } else {
       renderComingSoon(cmd);
       return;
     }
-
-    activeWorkflow = new WorkflowEngine('ndis', NDIS_STEPS, { patient: activePatient });
     renderWorkflowStep();
   }
 
@@ -261,9 +263,11 @@
   }
 
   function downloadDocument() {
-    if (!activeWorkflow?.state?.draftContent) return;
-    const content = activeWorkflow.state.draftContent;
-    const filename = `NDIS_${activePatient.name.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.txt`;
+    const content = activeWorkflow?.state?.summaryContent || activeWorkflow?.state?.draftContent;
+    if (!content) return;
+    const workflowId = activeWorkflow.workflowId;
+    const prefix = workflowId === 'coding' ? 'CodingReview' : 'NDIS';
+    const filename = `${prefix}_${activePatient.name.replace(/\s/g,'_')}_${new Date().toISOString().slice(0,10)}.txt`;
     const blob = new Blob([content], { type: 'text/plain' });
     const url  = URL.createObjectURL(blob);
     const a    = document.createElement('a');

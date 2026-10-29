@@ -52,9 +52,9 @@ const COMMAND_REGISTRY = [
   {
     command: '/coding',
     label: 'Clinical Coding',
-    description: 'Identify uncoded diagnoses and coding inconsistencies.',
+    description: 'Identify uncoded diagnoses, specificity gaps and medication-condition mismatches.',
     module: 'coding',
-    status: 'coming_soon',
+    status: 'available',
   },
   {
     command: '/recall',
